@@ -1,7 +1,9 @@
 import {ApplicationContract} from '@ioc:Adonis/Core/Application'
 import {HttpContextContract} from '@ioc:Adonis/Core/HttpContext'
 import {HoneypotFailureException} from '../Exceptions/HoneypotFailureException'
+import { inject } from '@adonisjs/core/build/standalone'
 
+@inject(['Adonis/Core/Application'])
 export class HoneypotMiddleware {
   private config = this.app.container.resolveBinding('Adonis/Core/Config').get('honeypot.honeypotConfig')
 
