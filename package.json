@@ -4,6 +4,13 @@
   "description": "Bot protection with Honeypot form fields in AdonisJS",
   "main": "build/providers/HoneypotProvider.js",
   "typings": "./build/adonis-typings/index.d.ts",
+  "files": [
+    "build/adonis-typings",
+    "build/providers",
+    "build/src",
+    "build/templates",
+    "build/instructions.md"
+  ],
   "scripts": {
     "mrm": "mrm --preset=@adonisjs/mrm-preset",
     "lint": "eslint . --ext=.ts",
