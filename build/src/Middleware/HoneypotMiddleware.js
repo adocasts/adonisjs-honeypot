@@ -22,6 +22,7 @@ let HoneypotMiddleware = class HoneypotMiddleware {
             INVALID: 2,
             MISSING: 3, // no honeypot fields found
         };
+        this.supportedMethods = ['POST', 'PUT', 'PATCH'];
     }
     validateFields(values) {
         let state = this.states.VALID;
@@ -35,7 +36,11 @@ let HoneypotMiddleware = class HoneypotMiddleware {
         }
         return state;
     }
-    async handle({ request, response, session }, next) {
+    async handle({ request, response, session, logger }, next) {
+        if (!this.supportedMethods.includes(request.method())) {
+            logger.warn(`[adonisjs-honeypot] Provided Http Method "${request.method()}" is not supported.`);
+            return;
+        }
         const honeyValues = request.only(this.config.fields);
         const state = this.validateFields(honeyValues);
         // no honeypot fields found

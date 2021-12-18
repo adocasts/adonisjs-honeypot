@@ -7,11 +7,14 @@ import { inject } from '@adonisjs/core/build/standalone'
 @inject(['Adonis/Core/Application'])
 export class HoneypotMiddleware {
   private config = this.app.container.resolveBinding('Adonis/Core/Config').get('honeypot.honeypotConfig')
+
   private states = {
     VALID: 1, // all good
     INVALID: 2, // honeypot field had a value
     MISSING: 3, // no honeypot fields found
   }
+
+  private supportedMethods = ['POST', 'PUT', 'PATCH']
 
   constructor (private app: ApplicationContract) {}
 
@@ -31,7 +34,12 @@ export class HoneypotMiddleware {
     return state
   }
 
-  public async handle ({ request, response, session }: HttpContextContract, next: () => Promise<void>) {
+  public async handle ({ request, response, session, logger }: HttpContextContract, next: () => Promise<void>) {
+    if (!this.supportedMethods.includes(request.method())) {
+      logger.warn(`[adonisjs-honeypot] Provided Http Method "${request.method()}" is not supported.`)
+      return
+    }
+
     const honeyValues = request.only(this.config.fields)
     const state = this.validateFields(honeyValues)
 

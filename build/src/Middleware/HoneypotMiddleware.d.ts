@@ -8,7 +8,8 @@ export declare class HoneypotMiddleware {
     private app;
     private config;
     private states;
+    private supportedMethods;
     constructor(app: ApplicationContract);
     private validateFields;
-    handle({ request, response, session }: HttpContextContract, next: () => Promise<void>): Promise<void>;
+    handle({ request, response, session, logger }: HttpContextContract, next: () => Promise<void>): Promise<void>;
 }
