@@ -1,11 +1,11 @@
 /**
- * Config source: TODO
+ * Config source: https://github.com/jagr-co/adonisjs-honeypot/blob/main/templates/honeypot.txt
  *
  * Feel free to let us know via PR, if you find something broken in this config
  * file.
  */
 
- import { HoneypotConfig } from '@ioc:Jagr/Honeypot'
+import { HoneypotConfig } from '@ioc:Jagr/Honeypot'
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +20,7 @@
 | define below. Just be sure your fields below won't collide with any
 | actual form fields your application will need.
 */
-export const honeypot: HoneypotConfig = {
+export const honeypotConfig: HoneypotConfig = {
   /*
   |--------------------------------------------------------------------------
   | Fields

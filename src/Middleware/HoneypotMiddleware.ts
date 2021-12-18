@@ -3,7 +3,7 @@ import {HttpContextContract} from '@ioc:Adonis/Core/HttpContext'
 import {HoneypotFailureException} from '../Exceptions/HoneypotFailureException'
 
 export class HoneypotMiddleware {
-  private config = this.app.container.resolveBinding('Adonis/Core/Config').get('honeypot')
+  private config = this.app.container.resolveBinding('Adonis/Core/Config').get('honeypot.honeypotConfig')
 
   constructor (private app: ApplicationContract) {}
 

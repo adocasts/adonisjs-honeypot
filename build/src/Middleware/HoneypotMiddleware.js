@@ -5,7 +5,7 @@ const HoneypotFailureException_1 = require("../Exceptions/HoneypotFailureExcepti
 class HoneypotMiddleware {
     constructor(app) {
         this.app = app;
-        this.config = this.app.container.resolveBinding('Adonis/Core/Config').get('honeypot');
+        this.config = this.app.container.resolveBinding('Adonis/Core/Config').get('honeypot.honeypotConfig');
     }
     async handle({ request, response, session }, next) {
         const honeyValues = request.only(this.config.fields);

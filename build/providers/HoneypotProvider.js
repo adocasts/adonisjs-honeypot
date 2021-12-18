@@ -14,9 +14,9 @@ class HoneypotProvider {
     async boot() {
         // IoC container is ready
         const View = this.app.container.resolveBinding('Adonis/Core/View');
-        const HoneypotConfig = this.app.container.resolveBinding('Adonis/Core/Config').get('honeypot');
+        const honeypotConfig = this.app.container.resolveBinding('Adonis/Core/Config').get('honeypot.honeypotConfig');
         View.registerTemplate('honeypot', {
-            template: HoneypotConfig.fields.map(f => `<input type="text" class="ohbother" name="${f}" />`).join(''),
+            template: honeypotConfig.fields.map(f => `<input type="text" class="ohbother" name="${f}" />`).join(''),
         });
     }
 }
