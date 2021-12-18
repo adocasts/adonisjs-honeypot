@@ -8,5 +8,6 @@ test/__app
 *.sublime-project
 *.sublime-workspace
 *.log
+build
 dist
 shrinkwrap.yaml
