@@ -1,4 +1,4 @@
-declare module 'Jagr/Honeypot' {
+declare module '@ioc:Jagr/Honeypot' {
   export type HoneypotConfig = {
     fields: string[]
     flashOnFailure: boolean
