@@ -2,7 +2,8 @@
   "name": "adonisjs-honeypot",
   "version": "1.0.0",
   "description": "Bot protection with Honeypot form fields in AdonisJS",
-  "main": "index.js",
+  "main": "build/providers/HoneypotProvider.js",
+  "typings": "./build/adonis-typings/index.d.ts",
   "scripts": {
     "mrm": "mrm --preset=@adonisjs/mrm-preset",
     "lint": "eslint . --ext=.ts",
@@ -11,7 +12,9 @@
     "clean": "del build",
     "compile": "npm run lint && npm run clean && tsc",
     "build": "npm run compile",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "copy:files": "copyfiles \"templates/**/*.txt\" build && npm run copy:instructions_md",
+    "copy:instructions_md": "copyfiles \"instructions.md\" build"
   },
   "keywords": [
     "adonisjs",
@@ -20,7 +23,7 @@
     "spam",
     "protection"
   ],
-  "author": "Tom Gobich",
+  "author": "tomgobich",
   "license": "MIT",
   "peerDependencies": {
     "@adonisjs/core": "^5.1.0",
@@ -70,5 +73,8 @@
     "build/src",
     "build/index.d.ts",
     "build/index.js"
-  ]
+  ],
+  "dependencies": {
+    "copyfiles": "^2.4.1"
+  }
 }

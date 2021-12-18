@@ -1,11 +1,16 @@
 import { ApplicationContract } from '@ioc:Adonis/Core/Application'
 
 export default class HoneypotProvider {
-  constructor (protected app: ApplicationContract) {
-  }
+  public static needsApplication = true
+
+  constructor (protected app: ApplicationContract) {}
 
   public register () {
     // Register your own bindings
+    this.app.container.singleton('Jagr/Honeypot', () => {
+      const { HoneyptMiddleware } = require('../src/Middleware/HoneypotMiddleware')
+      return HoneyptMiddleware
+    })
   }
 
   public async boot () {
@@ -14,15 +19,7 @@ export default class HoneypotProvider {
     const HoneypotConfig = this.app.container.resolveBinding('App/Core/Config').get('honeypot')
 
     View.registerTemplate('honeypot', {
-      template: HoneypotConfig.fields.map(f => `<input type="text" class="ohbother" name="${f}" />`).join('')
+      template: HoneypotConfig.fields.map(f => `<input type="text" class="ohbother" name="${f}" />`).join(''),
     })
-  }
-
-  public async ready () {
-    // App is ready
-  }
-
-  public async shutdown () {
-    // Cleanup, since app is going down
   }
 }

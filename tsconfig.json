@@ -5,7 +5,7 @@
       "@types/node",
       "@adonisjs/core",
       "@adonisjs/session",
-      "@adonsijs/view"
+      "@adonisjs/view"
     ]
   }
 }
