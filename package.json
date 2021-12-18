@@ -56,6 +56,10 @@
   ],
   "adonisjs": {
     "instructionsMd": "./build/instructions.md",
+    "types": "adonisjs-bouncer",
+    "providers": [
+      "adonisjs-bouncer"
+    ],
     "templates": {
       "config": [
         "honeypot.txt"
