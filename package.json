@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Bot protection with Honeypot form fields in AdonisJS",
   "main": "build/providers/HoneypotProvider.js",
+  "types": "build/adonis-typings/index.d.ts",
   "typings": "./build/adonis-typings/index.d.ts",
   "files": [
     "build/adonis-typings",
@@ -76,12 +77,11 @@
       ]
     }
   },
-  "files": [
-    "build/src",
-    "build/index.d.ts",
-    "build/index.js"
-  ],
   "dependencies": {
     "copyfiles": "^2.4.1"
+  },
+  "np": {
+    "contents": ".",
+    "anyBranch": false
   }
 }
