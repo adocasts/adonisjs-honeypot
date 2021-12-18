@@ -7,6 +7,8 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext';
 export declare class HoneypotMiddleware {
     private app;
     private config;
+    private states;
     constructor(app: ApplicationContract);
+    private validateFields;
     handle({ request, response, session }: HttpContextContract, next: () => Promise<void>): Promise<void>;
 }

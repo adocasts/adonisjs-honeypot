@@ -11,34 +11,49 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HoneypotMiddleware = void 0;
 const HoneypotFailureException_1 = require("../Exceptions/HoneypotFailureException");
+const NoHoneypotFieldsFoundException_1 = require("../Exceptions/NoHoneypotFieldsFoundException");
 const standalone_1 = require("@adonisjs/core/build/standalone");
 let HoneypotMiddleware = class HoneypotMiddleware {
     constructor(app) {
         this.app = app;
         this.config = this.app.container.resolveBinding('Adonis/Core/Config').get('honeypot.honeypotConfig');
+        this.states = {
+            VALID: 1,
+            INVALID: 2,
+            MISSING: 3, // no honeypot fields found
+        };
+    }
+    validateFields(values) {
+        let state = this.states.VALID;
+        if (Object.keys(values).length === 0) {
+            return this.states.MISSING;
+        }
+        for (let key in values) {
+            if (values[key]) {
+                state = this.states.INVALID;
+            }
+        }
+        return state;
     }
     async handle({ request, response, session }, next) {
         const honeyValues = request.only(this.config.fields);
-        let wasFlagged = false;
-        for (let key in honeyValues) {
-            if (honeyValues[key]) {
-                wasFlagged = true;
-            }
+        const state = this.validateFields(honeyValues);
+        // no honeypot fields found
+        if (state === this.states.MISSING) {
+            throw NoHoneypotFieldsFoundException_1.NoHoneypotFieldsFoundException.invoke();
         }
-        if (wasFlagged) {
+        // honeypot field contained value
+        if (state === this.states.INVALID) {
             if (this.config.flashOnFailure && this.config.flashMessage && this.config.flashKey) {
                 session.flash(this.config.flashKey, this.config.flashMessage);
             }
-            if (this.config.redirectOnFailure && this.config.redirectTo) {
-                response.redirect(this.config.redirectTo);
-            }
-            else {
+            if (!this.config.redirectOnFailure || !this.config.redirectTo) {
                 throw HoneypotFailureException_1.HoneypotFailureException.invoke();
             }
+            return response.redirect(this.config.redirectTo);
         }
-        else {
-            await next();
-        }
+        // all good, continue
+        await next();
     }
 };
 HoneypotMiddleware = __decorate([
