@@ -8,8 +8,8 @@ export default class HoneypotProvider {
   public register () {
     // Register your own bindings
     this.app.container.singleton('Jagr/Honeypot', () => {
-      const { HoneyptMiddleware } = require('../src/Middleware/HoneypotMiddleware')
-      return HoneyptMiddleware
+      const { HoneypotMiddleware } = require('../src/Middleware/HoneypotMiddleware')
+      return HoneypotMiddleware
     })
   }
 
