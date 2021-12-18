@@ -1,0 +1,70 @@
+{
+  "name": "adonisjs-honeypot",
+  "version": "1.0.0",
+  "description": "Bot protection with Honeypot form fields in AdonisJS",
+  "main": "index.js",
+  "scripts": {
+    "mrm": "mrm --preset=@adonisjs/mrm-preset",
+    "lint": "eslint . --ext=.ts",
+    "pretest": "npm run lint",
+    "test": "node .bin/test.js",
+    "clean": "del build",
+    "compile": "npm run lint && npm run clean && tsc",
+    "build": "npm run compile",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "adonisjs",
+    "honeypot",
+    "bot",
+    "spam",
+    "protection"
+  ],
+  "author": "Tom Gobich",
+  "license": "MIT",
+  "peerDependencies": {
+    "@adonisjs/core": "^5.1.0",
+    "@adonisjs/session": "^6.0.0",
+    "@adonisjs/view": "^6.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@adonisjs/session": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@adonisjs/core": "^5.4.2",
+    "@adonisjs/mrm-preset": "^5.0.2",
+    "@adonisjs/require-ts": "^2.0.8",
+    "@adonisjs/session": "^6.1.2",
+    "@adonisjs/view": "^6.1.1",
+    "@types/node": "^17.0.0",
+    "del-cli": "^4.0.1",
+    "eslint": "^8.5.0",
+    "eslint-plugin-adonis": "^2.1.0",
+    "japa": "^4.0.0",
+    "mrm": "^3.0.10",
+    "typescript": "^4.5.4"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:adonis/typescriptPackage"
+    ]
+  },
+  "eslintIgnore": [
+    "build"
+  ],
+  "adonisjs": {
+    "instructionsMd": "./build/instructions.md",
+    "templates": {
+      "config": [
+        "honeypot.txt"
+      ]
+    }
+  },
+  "files": [
+    "build/src",
+    "build/index.d.ts",
+    "build/index.js"
+  ]
+}
