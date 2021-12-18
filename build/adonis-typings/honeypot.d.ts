@@ -1,5 +1,11 @@
+/// <reference types="@adonisjs/application/build/adonis-typings" />
+/// <reference types="@adonisjs/http-server/build/adonis-typings" />
+/// <reference types="@adonisjs/session" />
+/// <reference types="@adonisjs/view" />
 declare module '@ioc:Jagr/Honeypot' {
-    type HoneypotConfig = {
+    import { ApplicationContract } from '@ioc:Adonis/Core/Application';
+    import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext';
+    export type HoneypotConfig = {
         fields: string[];
         flashOnFailure: boolean;
         flashMessage: string | null;
@@ -7,4 +13,11 @@ declare module '@ioc:Jagr/Honeypot' {
         redirectOnFailure: boolean;
         redirectTo: string | null;
     };
+    export interface HoneypotMiddlewareContract {
+        new (application: ApplicationContract): {
+            handle(ctx: HttpContextContract, next: () => Promise<void>): any;
+        };
+    }
+    const HoneypotMiddleware: HoneypotMiddlewareContract;
+    export default HoneypotMiddleware;
 }
