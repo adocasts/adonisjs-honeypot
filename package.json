@@ -1,5 +1,5 @@
 {
-  "name": "adonisjs-honeypot",
+  "name": "@adocasts/adonisjs-honeypot",
   "version": "1.0.0",
   "description": "Bot protection with Honeypot form fields in AdonisJS",
   "main": "build/providers/HoneypotProvider.js",
