@@ -23,7 +23,7 @@ Lastly, add it as a middleware within your project.
 // start/kernel.ts
 
 Server.middleware.registerNamed({
-  honeypot: () => import('@ioc:Jagr/Honeypot') // 👈
+  honeypot: () => import('@ioc:Adocasts/Honeypot') // 👈
 })
 ```
 
