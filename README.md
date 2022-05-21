@@ -11,11 +11,11 @@ have been left untouched. If any fields have been filled, we know a bot has subm
 ## Installation
 First install the package as a dependency on your project
 ```bash
-npm i @adocasts/adonisjs-bouncer
+npm i @adocasts.com/adonisjs-bouncer
 ```
 Then configure it within your project
 ```bash
-node ace configure @adocasts/adonisjs-bouncer
+node ace configure @adocasts.com/adonisjs-bouncer
 ```
 
 Lastly, add it as a middleware within your project.
@@ -52,10 +52,10 @@ So, all you need to do is add this component within your form!
 </form>
 ```
 
-[npm-image]: https://img.shields.io/npm/v/adonisjs-honeypot.svg?style=for-the-badge&logo=npm
-[npm-url]: https://npmjs.org/package/adonisjs-honeypot "npm"
+[npm-image]: https://img.shields.io/npm/v/@adocasts.com/adonisjs-honeypot.svg?style=for-the-badge&logo=npm
+[npm-url]: https://npmjs.org/package/@adocasts.com/adonisjs-honeypot "npm"
 
-[license-image]: https://img.shields.io/npm/l/adonisjs-honeypot?color=blueviolet&style=for-the-badge
+[license-image]: https://img.shields.io/npm/l/@adocasts.com/adonisjs-honeypot?color=blueviolet&style=for-the-badge
 [license-url]: LICENSE.md "license"
 
 [typescript-image]: https://img.shields.io/badge/Typescript-294E80.svg?style=for-the-badge&logo=typescript
