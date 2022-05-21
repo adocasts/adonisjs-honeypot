@@ -1,4 +1,4 @@
-declare module '@ioc:Jagr/Honeypot' {
+declare module '@ioc:Adocasts/Honeypot' {
   import { ApplicationContract } from '@ioc:Adonis/Core/Application'
   import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
