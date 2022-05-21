@@ -38,7 +38,9 @@ export const honeypotConfig: HoneypotConfig = {
   |--------------------------------------------------------------------------
   |
   | When true, a flash message will be added to the session when the
-  | honeypot fails due to the hidden fields being filled out.
+  | honeypot fails due to the hidden fields being filled out. In order for
+  | a flash message to be added, `flashMessage` and `flashKey` must have a
+  | value.
   |
   */
   flashOnFailure: true,
@@ -63,8 +65,9 @@ export const honeypotConfig: HoneypotConfig = {
   |--------------------------------------------------------------------------
   |
   | When true, the user will be redirect to your defined redirectTo path.
-  | When false, or when redirectTo is null or empty, the user will be
-  | returned back to the previous page.
+  | When false, or when redirectTo is null or empty, an error will be thrown
+  | which will prevent the bot form landing back at your form page and
+  | resubmitting.
   |
   */
   redirectOnFailure: false,

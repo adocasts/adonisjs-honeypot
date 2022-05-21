@@ -7,7 +7,7 @@ export default class HoneypotProvider {
 
   public register () {
     // Register your own bindings
-    this.app.container.singleton('Jagr/Honeypot', () => {
+    this.app.container.singleton('Adocasts/Honeypot', () => {
       const { HoneypotMiddleware } = require('../src/Middleware/HoneypotMiddleware')
       return HoneypotMiddleware
     })

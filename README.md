@@ -1,13 +1,56 @@
 # AdonisJS Honeypot
-> Tagline
+> A simple way to keep pesky bots from submitting your forms.
 
 [![npm-image]][npm-url] [![license-image]][license-url] [![typescript-image]][typescript-url]
 
-A short brief
+AdonisJS Honeypot allows you to easily add a honeypot system to your application
+to prevent bots from submitting your forms. AdonisJS Honeypot will add fields to your form
+that aren't visible to the user, but are to bots! Then, it validates that all fields
+have been left untouched. If any fields have been filled, we know a bot has submitted.
 
 ## Installation
+First install the package as a dependency on your project
+```bash
+npm i @adocasts/adonisjs-bouncer
+```
+Then configure it within your project
+```bash
+node ace configure @adocasts/adonisjs-bouncer
+```
+
+Lastly, add it as a middleware within your project.
+```typescript
+// start/kernel.ts
+
+Server.middleware.registerNamed({
+  honeypot: () => import('@ioc:Jagr/Honeypot') // 👈
+})
+```
 
 ## Usage
+To add honeypot to a form submission, 
+first apply the middleware to your route(s).
+```typescript
+Route
+  .post('/signup', 'AuthController.signup')
+  .middleware(['honeypot']) // 👈
+```
+This will require the honeypot fields to be submitted within your request's body.
+So, last thing we need to do is add the fields to your form.
+
+When you configured `@adocasts/adonisjs-bouncer` within your project,
+we registered a global component named `honeypot`. This single component
+will render all the configured honeypot fields and also hide them using CSS
+so they're visible to bots, but not to humans.
+
+So, all you need to do is add this component within your form!
+```html
+<form action="{{ route('auth.signup') }}" method="POST">
+  @!component('honeypot') {{-- 👈 --}}
+
+  {{-- ... other form fields ... --}}
+</form>
+```
 
 [npm-image]: https://img.shields.io/npm/v/adonisjs-honeypot.svg?style=for-the-badge&logo=npm
 [npm-url]: https://npmjs.org/package/adonisjs-honeypot "npm"
