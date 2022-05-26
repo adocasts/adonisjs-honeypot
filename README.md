@@ -11,11 +11,11 @@ have been left untouched. If any fields have been filled, we know a bot has subm
 ## Installation
 First install the package as a dependency on your project
 ```bash
-npm i @adocasts.com/adonisjs-bouncer
+npm i @adocasts.com/adonisjs-honeypot
 ```
 Then configure it within your project
 ```bash
-node ace configure @adocasts.com/adonisjs-bouncer
+node ace configure @adocasts.com/adonisjs-honeypot
 ```
 
 Lastly, add it as a middleware within your project.
@@ -25,6 +25,14 @@ Lastly, add it as a middleware within your project.
 Server.middleware.registerNamed({
   honeypot: () => import('@ioc:Adocasts/Honeypot') // 👈
 })
+```
+
+Also, be sure to define custom honeypot fields within `config/honeypot.ts`. 
+The more realistic the field names the more likely the honeypot is to work. 
+However, be sure the field names won't conflict with any fields in your site.
+```js
+// here are the default fields
+fields: ['ohbother', 'ohpiglet', 'ohpoo', 'firstName', 'lastName'],
 ```
 
 ## Usage
@@ -50,14 +58,6 @@ So, all you need to do is add this component within your form!
 
   {{-- ... other form fields ... --}}
 </form>
-```
-
-Also, be sure to define custom honeypot fields within `config/honeypot.ts`. 
-The more realistic the field names the more likely the honeypot is to work. 
-However, be sure the field names won't conflict with any fields in your site.
-```js
-// here are the default fields
-fields: ['ohbother', 'ohpiglet', 'ohpoo', 'firstName', 'lastName'],
 ```
 
 [npm-image]: https://img.shields.io/npm/v/@adocasts.com/adonisjs-honeypot.svg?style=for-the-badge&logo=npm
