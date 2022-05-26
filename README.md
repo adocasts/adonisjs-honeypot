@@ -38,7 +38,7 @@ Route
 This will require the honeypot fields to be submitted within your request's body.
 So, last thing we need to do is add the fields to your form.
 
-When you configured `@adocasts/adonisjs-bouncer` within your project,
+When you configured `@adocasts/adonisjs-honeypot` within your project,
 we registered a global component named `honeypot`. This single component
 will render all the configured honeypot fields and also hide them using CSS
 so they're visible to bots, but not to humans.
@@ -50,6 +50,14 @@ So, all you need to do is add this component within your form!
 
   {{-- ... other form fields ... --}}
 </form>
+```
+
+Also, be sure to define custom honeypot fields within `config/honeypot.ts`. 
+The more realistic the field names the more likely the honeypot is to work. 
+However, be sure the field names won't conflict with any fields in your site.
+```js
+// here are the default fields
+fields: ['ohbother', 'ohpiglet', 'ohpoo', 'firstName', 'lastName'],
 ```
 
 [npm-image]: https://img.shields.io/npm/v/@adocasts.com/adonisjs-honeypot.svg?style=for-the-badge&logo=npm
