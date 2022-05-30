@@ -1,6 +1,6 @@
 {
   "name": "@adocasts.com/adonisjs-honeypot",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Bot protection with Honeypot form fields in AdonisJS",
   "main": "build/providers/HoneypotProvider.js",
   "types": "build/adonis-typings/index.d.ts",
@@ -31,7 +31,7 @@
     "spam",
     "protection"
   ],
-  "author": "tomgobich",
+  "author": "adocasts.com,tomgobich",
   "license": "MIT",
   "peerDependencies": {
     "@adonisjs/core": "^5.1.0",
@@ -65,6 +65,14 @@
   "eslintIgnore": [
     "build"
   ],
+  "repository": {
+		"type": "git",
+		"url": "git+https://github.com/adocasts/adonisjs-honeypot.git"
+	},
+	"bugs": {
+		"url": "https://github.com/adocasts/adonisjs-honeypot/issues"
+	},
+	"homepage": "https://github.com/adocasts/adonisjs-honeypot#readme",
   "adonisjs": {
     "instructionsMd": "./build/instructions.md",
     "types": "@adocasts.com/adonisjs-honeypot",
