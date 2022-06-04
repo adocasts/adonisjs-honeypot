@@ -1,6 +1,6 @@
 {
   "name": "@adocasts.com/adonisjs-honeypot",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Bot protection with Honeypot form fields in AdonisJS",
   "main": "build/providers/HoneypotProvider.js",
   "types": "build/adonis-typings/index.d.ts",
@@ -77,7 +77,7 @@
     "instructionsMd": "./build/instructions.md",
     "types": "@adocasts.com/adonisjs-honeypot",
     "providers": [
-      "adonisjs-honeypot"
+      "@adocasts.com/adonisjs-honeypot"
     ],
     "templates": {
       "config": [
