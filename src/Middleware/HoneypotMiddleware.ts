@@ -3,6 +3,7 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { HoneypotFailureException } from '../Exceptions/HoneypotFailureException'
 import { NoHoneypotFieldsFoundException } from '../Exceptions/NoHoneypotFieldsFoundException'
 import { inject } from '@adonisjs/core/build/standalone'
+import { env } from 'process'
 
 @inject(['Adonis/Core/Application'])
 export class HoneypotMiddleware {
@@ -35,6 +36,12 @@ export class HoneypotMiddleware {
   }
 
   public async handle ({ request, response, session, logger }: HttpContextContract, next: () => Promise<void>) {
+    // bypass honeypot during tests
+    if (env['NODE_ENV']?.toLowerCase() === 'test') {
+      await next()
+      return
+    }
+
     if (!this.supportedMethods.includes(request.method())) {
       logger.warn(`[adonisjs-honeypot] Provided Http Method "${request.method()}" is not supported.`)
       return
