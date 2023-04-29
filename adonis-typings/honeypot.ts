@@ -3,6 +3,7 @@ declare module '@ioc:Adocasts/Honeypot' {
   import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
   export type HoneypotConfig = {
+    disableAutocomplete: boolean
     fields: string[]
     flashOnFailure: boolean
     flashMessage: string | null
