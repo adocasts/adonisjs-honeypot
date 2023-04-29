@@ -17,7 +17,10 @@ export default class HoneypotProvider {
     // IoC container is ready
     const View = this.app.container.resolveBinding('Adonis/Core/View')
     const honeypotConfig = this.app.container.resolveBinding('Adonis/Core/Config').get('honeypot.honeypotConfig')
-    const fieldTemplate = honeypotConfig.fields.map(f => `<input type="text" class="ohbother" name="${f}" />`).join('')
+    const disableAutocomplete = honeypotConfig.disableAutocomplete
+    const fieldTemplate = honeypotConfig.fields
+      .map(f => `<input type="text" class="ohbother" name="${f}" ${disableAutocomplete ? 'autocomplete="off"' : ''} />`)
+      .join('')
 
     View.registerTemplate('honeypot', {
       template: `
